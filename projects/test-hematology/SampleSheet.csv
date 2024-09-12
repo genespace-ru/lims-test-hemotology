@@ -1,0 +1,26 @@
+[Header]
+IEMFileVersion,5
+Investigator Name,Sasha
+Experiment Name,bcoc14_07122023_96_ms3
+Date,16.12.2023
+Workflow,GenerateFASTQ
+Application,FASTQ Only
+Instrument Type,MiSeq
+Assay,KAPA HyperPlus
+Index Adapters,"KAPA UDI Adapters"
+Description,bcoc14_from_07122023 
+Chemistry,Amplicon
+
+[Reads]
+151
+151
+
+[Settings]
+ReverseComplement,0
+Adapter,AGATCGGAAGAGCACACGTCTGAACTCCAGTCA
+AdapterRead2,AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT
+
+[Data]
+Sample_ID,Sample_Plate,Sample_Well,Index_Plate_Well,I7_Index_ID,index,I5_Index_ID,index2,Sample_Project,Description
+sample1,,A01,A01,i7_UDI01,GTAACATC,i5_UDI01,CAGCGATT,,
+sample2,,A02,A02,i7_UDI09,ATTATCAA,i5_UDI09,CGACTCTC,,

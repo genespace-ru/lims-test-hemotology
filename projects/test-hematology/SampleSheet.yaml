@@ -1,0 +1,74 @@
+Info:
+  version: v2
+  sn: ''
+  source: csv
+Sequence:
+  ID: 12
+  Cell: св-02.24-3 diol
+  Stand: синтол
+  Name: index_lib_15%phix_4pM
+  User: Константин Сычёв
+  Status: 4
+  Description: index_lib_15%phix_4pM
+  DateCreate: '2024-03-20 17:13:11'
+  DateStart: '2024-03-20 17:13:17'
+  DateEnd: ''
+Workflow:
+  Index1: 8
+  Index2: 8
+  Read1: 75
+  Read2: 60
+  Type: GenerateFASTQ
+  Sides: 2
+  Tiles: 40
+Library:
+  Application: FASTQ Only
+  InvestigatorName: Sasha
+  ExperimentName: bcoc14_07122023_96_ms3
+  Date: 16.12.2023
+  Assay: KAPA HyperPlus
+  Chemistry: Amplicon
+  IndexAdapters: '"KAPA UDI Adapters"'
+  Adapter1: AGATCGGAAGAGCACACGTCTGAACTCCAGTCA
+  Adapter2: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT
+  Description: bcoc14_from_07122023
+Data:
+  clusters: ''
+  clustsize: ''
+  bazenum: ''
+  SQ: ''
+  Length: ''
+  GC: ''
+  QGT20: ''
+  QGT30: ''
+Samples:
+  -   - Sample_ID
+      - Sample_Plate
+      - Sample_Well
+      - Index_Plate_Well
+      - I7_Index_ID
+      - index
+      - I5_Index_ID
+      - index2
+      - Sample_Project
+      - Description
+  -   - sample1
+      - ''
+      - A01
+      - A01
+      - i7_UDI01
+      - GTAACATC
+      - i5_UDI01
+      - CAGCGATT
+      - ''
+      - ''
+  -   - sample2
+      - ''
+      - A02
+      - A02
+      - i7_UDI09
+      - ATTATCAA
+      - i5_UDI09
+      - CGACTCTC
+      - ''
+      - ''
