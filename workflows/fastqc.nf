@@ -1,4 +1,4 @@
-params.projectDir = './projects/prj_tmp'
+params.projectDir = '../projects/test-hematology'
 params.readsDir   = "${params.projectDir}/samples/*.fastq.gz"
 params.fastqcDir  = "${params.projectDir}/results/fastqc"
 params.multiqcDir = "${params.projectDir}/results/multiqc"
