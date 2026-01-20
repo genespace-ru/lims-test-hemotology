@@ -1,11 +1,7 @@
-params.projectDir = './projects/prj_tmp'
-params.readsDir   = "${params.projectDir}/samples/*.fastq.gz"
-params.fastqcDir  = "${params.projectDir}/results/fastqc"
-params.multiqcDir = "${params.projectDir}/results/multiqc"
-
+params.allReads = "${params.readsDir}/*.fastq.gz"
 Channel
-    .fromPath( params.readsDir )
-    .ifEmpty { error "Cannot find any reads matching: ${params.readsDir}" }
+    .fromPath( params.allReads )
+    .ifEmpty { error "Cannot find any reads matching: ${params.allReads}" }
     .set {reads_for_fastqc}
 
 process fastQC {
@@ -43,8 +39,20 @@ process multiQC {
     """
 }
 
+process parseMultyQC {
+    input:
+    path (inputfiles)
+
+    script:
+    """
+    	curl -H "Content-Type: application/json" --data '{${params.parseData},"results":"${params.multiqcDir}/multiqc_data/multiqc_fastqc.txt"}' ${params.parseUrl}
+    """
+
+}
+
 workflow {
     fastqc_out = fastQC(reads_for_fastqc)
-    multiQC(fastqc_out.collect())
+    multiQC_out = multiQC(fastqc_out.collect())
+    parseMultyQC("${params.multiqcDir}/multiqc_data_multiqc_fastqc.txt")
 }
 
