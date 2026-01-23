@@ -45,7 +45,7 @@ process parseMultyQC {
 
     script:
     """
-    	curl -H "Content-Type: application/json" --data '{${params.parseData},"results":"${params.multiqcDir}/multiqc_data/multiqc_fastqc.txt"}' ${params.parseUrl}
+    	curl -H "Content-Type: application/json" --data '{${params.parseData},"results":"${params.multiqcDir}/multiqc_data/multiqc_fastqc.txt", "report":"${params.multiqcDir}/multiqc_report.html"}' ${params.parseUrl}
     """
 
 }
