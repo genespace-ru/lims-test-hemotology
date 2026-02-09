@@ -5,7 +5,7 @@ Channel
     .set {reads_for_fastqc}
 
 process fastQC {
-    publishDir params.fastqcDir, mode: 'copy'
+    publishDir "${params.fastqcDir}", mode: 'copy'
     tag { "${reads}" }
     label 'big_mem' 
 
@@ -23,14 +23,14 @@ process fastQC {
 }
 
 process multiQC {
-    publishDir params.multiqcDir, mode: 'copy' 	// this time do not link but copy the output file
+    publishDir "${params.multiqcDir}", mode: 'copy'
 
     input:
     path (inputfiles)
 
     output:
-    path("multiqc_report.html")
-    path("multiqc_data/multiqc_fastqc.txt")
+    path "multiqc_report.html"
+    path "multiqc_data/multiqc_fastqc.txt"
 
     container 'quay.io/biocontainers/multiqc:1.21--pyhdfd78af_0'
     script:
@@ -41,7 +41,7 @@ process multiQC {
 
 process parseMultyQC {
     input:
-    path (inputfiles)
+    path (inputfiles_mqc)
 
     script:
     """
@@ -53,6 +53,6 @@ process parseMultyQC {
 workflow {
     fastqc_out = fastQC(reads_for_fastqc)
     multiQC_out = multiQC(fastqc_out.collect())
-    parseMultyQC("${params.multiqcDir}/multiqc_data_multiqc_fastqc.txt")
+    parseMultyQC(multiQC_out[1].collect())
 }
 
